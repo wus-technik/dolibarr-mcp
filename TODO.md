@@ -1,6 +1,21 @@
-# TODO: Per-User Credential Authentication
+# TODO
 
-## Goal
+## GitHub Actions: Build & Push Docker Images to GHCR
+
+- [ ] Create `.github/workflows/docker-publish.yml`
+- [ ] Trigger on push to `main` / `hosted` and on tags (`v*`)
+- [ ] Authenticate to `ghcr.io` using `GITHUB_TOKEN`
+- [ ] Build multi-platform image (`linux/amd64`, `linux/arm64`) with Docker Buildx
+- [ ] Tag images: `ghcr.io/<owner>/dolibarr-mcp:latest`, `:sha-<short>`, and `:v<version>` on tagged releases
+- [ ] Use Docker layer caching (`actions/cache` or `cache-from`/`cache-to` in buildx)
+- [ ] Run `pytest` in a build stage or separate job before pushing
+- [ ] Add badge to README
+
+---
+
+## Per-User Credential Authentication
+
+### Goal
 
 Replace the current shared/server-level `DOLIBARR_API_KEY` with per-user credentials so that each MCP session uses the connecting user's Dolibarr API key, inheriting their Dolibarr permissions.
 
